@@ -1,0 +1,47 @@
+<div class="container mt-3">
+    <div class="row">
+        <div class="col-md-4">
+            <div class="card shadow">
+                <div class="card-body">
+                    <div class="card-title">
+                        <h2>Task APP</h2>
+                    </div>
+
+                    <div class="form-group mb-2">
+                        <label for="">Tugas Saya</label>
+                        <input [(ngModel)]="todo" type="text" class="form-control">
+                    </div>
+
+                    <button (click)="addTodo()" class="btn btn-primary">Tambah Tugas</button>
+                    <button (click)="popTodo()" class="btn btn-danger">Hapus Tugas</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-8">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Task</th>
+                        <th>Aksi</th>
+                    </tr>
+                </thead>
+
+                <tbody *ngIf="todos">
+                    <ng-template ngFor let-item [ngForOf]="todos" let-i="index">
+                        <tr>
+                            <td> {{ item }} </td>
+                            <td> <button (click)="remove(i)" class="btn btn-danger btn-sm"> Hapus </button> </td>
+                        </tr>
+
+                    </ng-template>
+                    <!-- <tr *ngFor="let task of todos">
+                        <td>
+                            {{ task }}
+                        </td>
+                    </tr> -->
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

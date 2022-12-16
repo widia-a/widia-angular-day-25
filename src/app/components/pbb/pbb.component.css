@@ -1,0 +1,68 @@
+.container-pbb {
+    display: flex; 
+    border: 1px solid black;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.card {
+    display: flex;
+    justify-content: center;
+    background-color: mintcream;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.card-content{
+    display: flex;
+    flex-direction: column;
+    width: 400px;
+}
+
+
+.header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+/* .form-control {
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 5px;
+    padding-top: 5px;
+}
+
+label{
+    margin-bottom: 4px;
+} */
+
+/* input {
+    margin-bottom: 20px;
+    height: 30px;
+    border-radius: 5px;
+} */
+
+/* button {
+    background-color: #04AA6D;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    border-radius: 10px;
+  } */
+  
+  button:hover {
+    opacity: 0.8;
+  }
+
+  .hasil {
+    margin-top: 30px;
+  }
+
+  label#hasil {
+    display: flex;
+    justify-content: center;
+}

@@ -1,0 +1,106 @@
+<div class="container mt-3">
+    <div class="row">
+        <div class="menu-app">
+            <h1>Menu APP</h1>
+        </div>
+
+        <div class="col-md-4">
+            <div class="card shadow">
+                <div class="card-body">
+                    <div class="card-title">
+                        <h2>Input Pesanan</h2>
+                    </div>
+
+                    <div class="form-group mb-3">
+                        <label>Makanan / Minuman</label>
+                        <input [(ngModel)]="menu.name" type="text" class="form-control">
+                    </div>
+
+                    <div class="form-group mb-3">
+                        <label>Harga</label>
+                        <input [(ngModel)]="menu.price" type="number" class="form-control">
+                    </div>
+
+                    <div class="form-group mb-3">
+                        <label>Qty</label>
+                        <input [(ngModel)]="menu.quantity" type="number" class="form-control">
+                    </div>
+
+                    <button (click)="addPesanan()" class="btn btn-primary">Tambah Pesanan</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-8">
+            <div class="card shadow">
+                <div class="card-body">
+                    <div class="card-title">
+                        <h2>Daftar Pesanan</h2>
+            <table class="table table-bordered" *ngIf="pesanan.length > 0; else emptyMenu">
+                <thead>
+                    <tr>
+                        <th>Makanan/Minuman</th>
+                        <th>Harga</th>
+                        <th>Quantity</th>
+                        <th>Total</th>
+                        <th>Aksi</th>
+                    </tr>
+                </thead>
+
+                <tbody *ngIf="pesanan">
+                    <ng-template ngFor let-item [ngForOf]="pesanan" let-i="index">
+                        <tr>
+                            <td>{{ item.name }}</td>
+                            <td>{{ item.price }}</td>
+                            <td>{{ item.quantity }}</td>
+                            <td> {{ (item.price * item.quantity) | currency: "IDR" }}</td>
+                            <td><button (click)="hapusPesanan(i)" class="btn btn-danger">Hapus</button></td>
+                        </tr>
+                    </ng-template>
+
+                                           
+                </tbody>
+                <tfoot>
+                    <tr *ngIf="pesanan">
+                        <th colspan="3">Subtotal</th>
+                        <th colspan="3">{{ harga | currency:"IDR"}}</th>
+                    </tr>
+                    <tr *ngIf="pesanan">
+                        <th colspan="3">PPN</th>
+                        <th colspan="3">{{11 / 100 | percent }}</th>
+                    </tr>
+                    <tr *ngIf="pesanan">
+                        <th colspan="3">Total</th>
+                        <th colspan="3">{{ hargaTotal |  currency: "IDR" }}</th>
+                    </tr> 
+                    <tr class="table-light">
+                        <th colspan="3">Bayar</th>
+                        <td colspan="2"><input [(ngModel)]="bayar" (keypress)="enter($event)" type="number" class="form-control"></td>
+                    </tr>
+                    <tr>
+                       <th colspan="3">Kembalian</th> 
+                       <td colspan="2">
+                        <div *ngIf="statusPby" class="alert alert-success" role="alert">
+                            {{ kembalian |  currency: "IDR" }}
+                          </div>
+                          <div *ngIf="!statusPby" class="alert alert-danger" role="alert">
+                            uang tidak cukup
+                          </div>
+                       </td>
+                    </tr>
+                </tfoot>
+            </table>
+            
+            <ng-template #emptyMenu>
+                <div class="alert alert-danger" role="alert">
+                    Pesanan Kosong
+                  </div>
+            </ng-template>
+            </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</div>
